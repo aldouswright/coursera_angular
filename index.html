@@ -45,7 +45,7 @@
      <ul ng-repeat="item in alreadyBoughtController.items">
        <li>Bought {{item.quantity}} {{item.name}}</li>
      </ul>
-     <div class="emptyMessage" ng-if="alreadyBoughtController.cartItems.length != 0">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if="alreadyBoughtController.items.length == 0">Nothing bought yet.</div>
     </div>
   </div>
 </div>
