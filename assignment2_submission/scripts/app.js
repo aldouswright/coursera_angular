@@ -7,8 +7,8 @@
 	
 	console.log("Hello");
 
-	ToBuyController.$inject = ["ShoppingListCheckOffService"];
-	function ToBuyController(ShoppingListCheckOffService){
+	ToBuyController.$inject = ["ShoppingListCheckOffService";
+	function ToBuyController(ShoppingListCheckOffService, $scope){
 		var list1 = this;
 		list1.items = ShoppingListCheckOffService.getCartItems();
 		list1.buyItem = function(idx){
@@ -17,10 +17,10 @@
 	};
 
 	AlreadyBoughtController.$inject = ["ShoppingListCheckOffService"];
-	function AlreadyBoughtController(ShoppingListCheckOffService){
+	function AlreadyBoughtController(ShoppingListCheckOffService, $scope){
 		var list2 = this;
-		//var boughtItemsList = Sh();
 		list2.items = ShoppingListCheckOffService.getBoughtItems();
+		list2.cartItems = ShoppingListCheckOffService.getCartItems();
 	};
 
 	function ShoppingListCheckOffService(){
@@ -43,13 +43,12 @@
 			}
 		];
 		var boughtItems = [];
-		var hasItems = true;
 
 		service.buyItem = function(index){
 			var toRemove = cartItems[index];
 			boughtItems.push(toRemove);
 			cartItems.splice(index, 1);
-			if(boughtItems.length == 0){
+			if(cartItems.length == 0){
 				hasItems = false;
 			}
 		};
@@ -62,5 +61,4 @@
 			return boughtItems;
 		};
 	}
-
 })();
