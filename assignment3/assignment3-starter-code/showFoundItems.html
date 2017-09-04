@@ -1,11 +1,3 @@
-<ol>
-  <li ng-repeat="item in narrowItDownList.items">
-  	{{item}}
-    {{ item.name }}, {{ item.short_name }}, {{ item.description }}
-    
-  </li>
-</ol>
-
 <table class="table">
 	<thead>
 		<tr>
@@ -20,8 +12,8 @@
 			<td>{{ item.name }}</td>
 			<td>{{ item.short_name }}</td>
 			<td>{{ item.description }}</td>
-			<td><button class="btn btn-default" ng-click="narrowItDownList.onRemove({index: $index});">Remove Item</button></td>
+			<td><button class="btn btn-danger" ng-click="narrowItDownList.onRemove({index: $index});">Remove Item</button></td>
 		</tr>
 	</tbody>
 </table>
-
+<span ng-if="narrowItDownList.items.length == 0">No items where fetched</span>
