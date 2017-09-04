@@ -12,12 +12,16 @@
 		service.getMatchedMenuItems = function(term){
 			var matchedItems = [];
 			$http.get(url).then(function successFunction(response){
-				console.log(response);
 				var items = response.data["menu_items"];
 				for (var idx in items){
-					if (term.indexOf(items[idx]["description"]) != -1){
+					var d = items[idx]["description"];
+					console.log("item");
+					console.log(items[idx])
+					console.log("indexOf");
+					console.log(d.indexOf(term))
+					if (d.indexOf(term) != -1){
 						matchedItems.push(items[idx]);
-					}	
+					}
 				}
 			},function errorFunction(response){});
 			return matchedItems;
@@ -30,12 +34,13 @@
 		controller.found = null;
 		controller.search_term = "";
 		controller.update_items = function(){
-			console.log("search_term: " + controller.search_term)
+			console.log(controller.search_term);
 			controller.found = MenuSearchService.getMatchedMenuItems(controller.search_term);
-			console.log(controller.found);
+		},
 
+		controller.removeItem = function(idx){
+			controller.found.splice(idx, 1);
 		}
-
 	};
 
 	
@@ -43,11 +48,12 @@
 		var ddo = {
 			templateUrl: 'showFoundItems.html',
 			scope:{
-				found: '<'
+				items: '<',
+				onRemove: '&'
 			},
-			//ontroller: narrowItDownController,
-			//controllerAs: 'narrowItDownList',
-			//bindToController: true
+			controller: narrowItDownController,
+			controllerAs: 'narrowItDownList',
+			bindToController: true
 		};
 		return ddo;
 	};

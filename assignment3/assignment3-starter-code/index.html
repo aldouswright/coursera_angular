@@ -13,15 +13,27 @@
    <div class="container" ng-controller="NarrowItDownController as nid_cont">
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-    <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control" ng-model="nid_cont.search_term">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <input type="text" placeholder="search term" class="form-control" ng-model="nid_cont.search_term">
+        </div>    
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group narrow-button">
+          <button class="btn btn-primary" ng-click="nid_cont.update_items()">Narrow It Down For Me!</button>
+        </div>    
+      </div>
     </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="nid_cont.update_items()">Narrow It Down For Me!</button>
+    
+    <div class="row">
+      <!-- found-items should be implemented as a component -->
+      <div class="col-xs-12">
+        <div class="form-group">
+          <found-items items="nid_cont.found" on-remove="nid_cont.removeItem(index)"></found-items>
+        </div>
+      </div>
     </div>
-
-    <!-- found-items should be implemented as a component -->
-    <found-items found="nid_cont.found" on-remove="...."></found-items>
   </div>
 </body>
 </html>
