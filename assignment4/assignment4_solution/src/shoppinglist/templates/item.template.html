@@ -1,0 +1,20 @@
+<h2>
+	Category Items
+</h2>
+<ol>
+	<li ng-repeat="item in $ctrl.items">
+		<ul>
+			<li>Name: {{ item.name }}</li>
+			<li>Description {{item.description}}</li>
+			<li>Price:
+				<ul>
+					<li>Small: {{item.price_small}}</li>
+					<li>
+						Large: {{ item.price_large}}
+					</li>
+				</ul>
+
+			</li>
+		</ul>
+	</li>
+</ol>
