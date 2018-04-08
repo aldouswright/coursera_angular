@@ -1,0 +1,76 @@
+<div id="reg_form">
+    <h1>Newsletter Signup</h1>
+    <fieldset ng-controller="SignUpController as reg">
+      <form name='regForm' novalidate ng-if="!reg.completed">
+
+      	<label for="signup_firstname">First name:</label>
+        <input type="text" name="first_name" ng-model="reg.user.first_name"
+          required
+          minlength="4"
+          ng-maxlength="10"
+          id="signup_firstname"
+          >
+          <span
+            ng-if="regForm.first_name.$error.required && regForm.first_name.$touched">
+            First name is required
+          </span>
+          <br>
+
+        <label for="signup_lasttname">Last name:</label>
+        <input type="text" name="last_name" ng-model="reg.user.last_name"
+          required
+          minlength="4"
+          ng-maxlength="10"
+          id="signup_lasttname">
+          <span
+            ng-if="regForm.last_name.$error.required && regForm.last_name.$touched">
+            First name is required
+          </span>
+          <br>
+
+        <label for="signup_email">Email:</label>
+        <input type="email" name="email" ng-model="reg.user.email" id="signup_email"
+          required>
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <br>
+
+        <label for="signup_address">Address:</label>
+        <textarea name="address" id="signup_address" required ng-model="reg.user.address"></textarea>
+        <span ng-if="regForm.address.$error.required && regForm.address.$touched" id="signup_address">
+        	Your address is required.
+        </span>
+        <br>
+        
+        <label for="signup_phone">Phone:</label>
+        <input type="text" name="phone" placeholder="###-###-####"
+          ng-model="reg.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})"
+          id="signup_phone"
+          >
+          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+          <br>
+      
+      	<label for="signup_shortname">Favorite Menu shortname:</label>
+        <input type="text" name="shortname"
+          ng-model="reg.user.shortname"
+          required>
+        <span ng-if="!reg.valid_shortname">
+        	No such menu number exists.
+        </span>
+
+        <br>
+        <button
+          ng-disabled="regForm.$invalid"
+          ng-click="reg.submit()">Submit</button>
+      </form>
+      	<div id="info" ng-if="reg.completed">
+      		Your information has been saved.
+    	</div>
+    </fieldset>
+
+    
+</div>

@@ -1,0 +1,26 @@
+<div id="myInfo">
+    <h1>User's Info</h1>
+    <fieldset ng-controller="MyInfoController as miCont">
+      {{ miCon.currentUser}}
+      <div ng-if="miCont.currentUser != null">
+        <label for="first_name" >First Name:</label>
+        <div id="first_name" >{{ miCont.currentUser.first_name }}</div>
+        <label for="last_name">Last Name:</label>
+        <div id="last_name">{{ miCont.currentUser.last_name }}</div>
+        <label for="email" >Email:</label>
+        <div id="email" >{{ miCont.currentUser.email }}</div>
+        <label for="address" >Address:</label>
+        <div id="address" >{{ miCont.currentUser.address }}</div>
+        <label for="phone_number" >Phone number: </label>
+        <div id="phone_number" > {{ miCont.currentUser.phone }} </div>
+        <label for="fi_dish_name" >Favorite Dish Name:</label>
+        <div id="fi_dish_name" > {{ miCont.currentUser.title }} </div>
+        <label for="fi_dish_desc">Favorite Dish Description:</label>
+        <div id="fi_dish_desc" > {{ miCont.currentUser.description }} </div>
+        <label for="fi_dish_img">Favorite Dish:</label><img ng-src="{{miCont.currentUser.imgUrl}}"></img>
+      </div>
+      <div ng-if="miCont.currentUser == null">
+        Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+      </div>
+    </fieldset>
+</div>
